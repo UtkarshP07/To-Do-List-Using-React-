@@ -53,9 +53,7 @@ export default function App() {
         onToggleTL={handleToggleTL}
       />
       <div className="content">
-        {home && (
-          <Home onToggleTL={handleToggleTL} onAddTasks={handleAddTasks} />
-        )}
+        {home && <Home onToggleTL={handleToggleTL} />}
         {tasklist && (
           <TaskList
             tasksNew={tasksNew}
@@ -110,29 +108,17 @@ function Footer() {
   );
 }
 
-function Home({ onToggleTL, onAddTasks }) {
-  const [newAdd, setNewAdd] = useState(false);
+function Home({ onToggleTL }) {
   return (
     <div className="home">
-      {!newAdd ? (
-        <>
-          <h3>Welcome to GeekyTasks</h3>
+      <h3>Welcome to GeekyTasks</h3>
 
-          <p>
-            GeekyTasks is your ultimate task management solution. Simplify your
-            life by orgranizing your tasks with ease and efficiency.
-          </p>
+      <p>
+        GeekyTasks is your ultimate task management solution. Simplify your life
+        by orgranizing your tasks with ease and efficiency.
+      </p>
 
-          <Button onClick={onToggleTL}>Start Adding Tasks</Button>
-          <div className="add">
-            <Button onClick={() => setNewAdd(true)} className="btn homeBtn">
-              +
-            </Button>
-          </div>
-        </>
-      ) : (
-        <AddTask onAddTasks={onAddTasks} />
-      )}
+      <Button onClick={onToggleTL}>Start Adding Tasks</Button>
     </div>
   );
 }
